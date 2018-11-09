@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StandardButtonModel } from '../model/standard-button-model';
 
 @Component({
   selector: 'app-header',
