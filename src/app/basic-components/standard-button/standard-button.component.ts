@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StandardButtonModel } from '../model/standard-button-model';
+import { StandardButtonModel } from '../../model/standard-button-model';
 
 @Component({
   selector: 'app-standard-button',
