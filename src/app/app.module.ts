@@ -10,6 +10,7 @@ import { InvoiceHeaderComponent } from './containers/invoice-header/invoice-head
 import { InvoiceSideComponent } from './containers/invoice-side/invoice-side.component';
 import { InvoiceSidesComponent } from './containers/invoice-sides/invoice-sides.component';
 import { PaymentInfoComponent } from './containers/payment-info/payment-info.component';
+import { InvoiceSummaryComponent } from './containers/invoice-summary/invoice-summary.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PaymentInfoComponent } from './containers/payment-info/payment-info.com
     InvoiceHeaderComponent,
     InvoiceSideComponent,
     InvoiceSidesComponent,
-    PaymentInfoComponent
+    PaymentInfoComponent,
+    InvoiceSummaryComponent
   ],
   imports: [
     BrowserModule,

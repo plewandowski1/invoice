@@ -5,54 +5,9 @@
     <app-invoice-header></app-invoice-header>
     <app-invoice-sides></app-invoice-sides>
     <app-payment-info></app-payment-info>
-
-    <div class="row">
-      <div class="col-sm">
-        <div class="form-group">
-          <label for="status">Status</label>
-          <select class="form-control" id="status">
-            <option>Niezapłacona</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="form-group">
-          <label for="payment-method">Sposób płatności</label>
-          <select class="form-control" id="payment-method">
-            <option>Przelew</option>
-            <option>Gotówka</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="form-group">
-          <label for="payment-deadline">Termin płatności</label>
-          <input type="date" class="form-control" id="payment-deadline">
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label for="bank-account">Numer konta</label>
-          <input type="text" class="form-control" id="bank-account">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="comments">Uwagi</label>
-          <input type="text" class="form-control" id="comments">
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center">
-      <button type="button" class="btn btn-outline-primary">Generuj pdf</button>
-    </div>
+    <app-invoice-summary></app-invoice-summary>
 
     <div class="mb-5"></div>
-
   </div>
 
 <router-outlet></router-outlet>
