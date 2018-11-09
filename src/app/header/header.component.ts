@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  private editButtonName = "Edytuj na podstawie pdf";
+  private editButtonClass = "btn-outline-secondary";
+
+  private loadTemplateButtonName = "Wczytaj szablon";
+  private loadTemplateButtonClass = "btn-outline-secondary";
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  private editButtonCallback() : void{
+    console.log("hello edit button");
+  }
+
+  private loadTemplateButtonCallback(): void{
+    console.log("hello load button");
+    
   }
 
 }

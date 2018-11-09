@@ -1,6 +1,6 @@
 <div class="alert alert-primary" role="alert">
   <div class="text-center">
-    <button type="button" class="btn btn-outline-secondary">Edytuj na podstawie pdf</button>
-    <button type="button" class="btn btn-outline-secondary">Wczytaj szablon</button>
+    <app-standard-button [name]="editButtonName" [class]="editButtonClass" [clickCallback]="editButtonCallback"></app-standard-button>
+    <app-standard-button [name]="loadTemplateButtonName" [class]="loadTemplateButtonClass" [clickCallback]="loadTemplateButtonCallback"></app-standard-button>   
   </div>
 </div>
