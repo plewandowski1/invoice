@@ -8,13 +8,13 @@ import { StandardButtonModel } from '../model/standard-button-model';
 })
 export class HeaderComponent implements OnInit {
 
-  editButton = {
+  editButtonModel = {
     name: "Edytuj na podstawie pdf",
     class: "btn-outline-secondary",
     callback: this.editButtonCallback,
   }
 
-  loadTemplateButton = {
+  loadTemplateButtonModel = {
     name: "Wczytaj szablon",
     class: "btn-outline-secondary",
     callback: this.loadTemplateButtonCallback,
