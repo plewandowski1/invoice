@@ -1,3 +1,292 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="document">Dokument</label>
+          <select class="form-control" id="document">
+            <option>Faktura VAT</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="creation-place">Miejsce wystawienia</label>
+          <input type="text" class="form-control" id="creation-place">
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="number">Numer</label>
+          <input type="text" class="form-control" id="number">
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="creationDate">Data wystawienia</label>
+          <input type="date" class="form-control" id="creationDate">
+        </div>
+        <div class="form-group">
+          <label for="creationDate">Data sprzedaży</label>
+          <input type="date" class="form-control" id="creationDate">
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-primary"></div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group row">
+          <label for="seller" class="col-sm-2 col-form-label">Sprzedawca</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="seller">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="nip" class="col-sm-2 col-form-label">NIP</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nip">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="street" class="col-sm-2 col-form-label">Ulica</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="street">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="city" class="col-sm-2 col-form-label">Miasto/kod</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="city">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="postcode">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col">
+          <div class="form-group row">
+            <label for="buyer" class="col-sm-2 col-form-label">Nabywca</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="buyer">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="buyer-nip" class="col-sm-2 col-form-label">NIP</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="buyer-nip">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="buyer-street" class="col-sm-2 col-form-label">Ulica</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="buyer-street">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="buyer-city" class="col-sm-2 col-form-label">Miasto/kod</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="buyer-city">
+            </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="buyer-postcode">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row alert alert-primary">
+      <div class="col-sm-4">
+        Nazwa towaru lub usługi
+      </div>
+      <div class="col-sm-1">
+        Kod
+      </div>
+      <div class="col-sm-1">
+        Jm.
+      </div>
+      <div class="col-sm-1">
+        Ilość
+      </div>
+      <div class="col-sm-1">
+        Cena netto
+      </div>
+      <div class="col-sm-1">
+        Wartość netto
+      </div>
+      <div class="col-sm-1">
+        Stawka VAT
+      </div>
+      <div class="col-sm-1">
+        Kwota VAT
+      </div>
+      <div class="col-sm-1">
+        Wartość brutto
+      </div>
+    </div>
+
+    <div class="form-group row">
+
+      <div class="col-sm-1">
+        <i class="fas fa-minus"></i>
+      </div>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="buyer-city">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6"> <i class="fas fa-plus"></i></div>
+      <div class="col-sm-2">
+        Razem
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-2">
+        Do zapłaty
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-2">
+        Waluta
+      </div>
+      <div class="col-sm-1">
+        <input type="text" class="form-control" id="buyer-postcode">
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+      <div class="col-sm-1">
+
+      </div>
+    </div>
+
+    <div class="alert alert-primary"></div>
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" id="status">
+            <option>Niezapłacona</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="payment-method">Sposób płatności</label>
+          <select class="form-control" id="payment-method">
+            <option>Przelew</option>
+            <option>Gotówka</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="payment-deadline">Termin płatności</label>
+          <input type="date" class="form-control" id="payment-deadline">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="bank-account">Numer konta</label>
+          <input type="text" class="form-control" id="bank-account">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="comments">Uwagi</label>
+          <input type="text" class="form-control" id="comments">
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="button" class="btn btn-outline-primary">Generuj pdf</button>
+    </div>
+
+    <div class="mb-5"></div>
+
+  </div>
+
 <router-outlet></router-outlet>
