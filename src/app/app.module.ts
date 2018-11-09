@@ -8,6 +8,8 @@ import { HeaderComponent } from './containers/header/header.component';
 import { StandardInputComponent } from './basic-components/standard-input/standard-input.component';
 import { InvoiceHeaderComponent } from './containers/invoice-header/invoice-header.component';
 import { InvoiceSideComponent } from './containers/invoice-side/invoice-side.component';
+import { InvoiceSidesComponent } from './containers/invoice-sides/invoice-sides.component';
+import { PaymentInfoComponent } from './containers/payment-info/payment-info.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { InvoiceSideComponent } from './containers/invoice-side/invoice-side.com
     HeaderComponent,
     StandardInputComponent,
     InvoiceHeaderComponent,
-    InvoiceSideComponent
+    InvoiceSideComponent,
+    InvoiceSidesComponent,
+    PaymentInfoComponent
   ],
   imports: [
     BrowserModule,
