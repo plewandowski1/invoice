@@ -7,6 +7,7 @@ import { StandardButtonComponent } from './basic-components/standard-button/stan
 import { HeaderComponent } from './containers/header/header.component';
 import { StandardInputComponent } from './basic-components/standard-input/standard-input.component';
 import { InvoiceHeaderComponent } from './containers/invoice-header/invoice-header.component';
+import { InvoiceSideComponent } from './containers/invoice-side/invoice-side.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { InvoiceHeaderComponent } from './containers/invoice-header/invoice-head
     StandardButtonComponent,
     HeaderComponent,
     StandardInputComponent,
-    InvoiceHeaderComponent
+    InvoiceHeaderComponent,
+    InvoiceSideComponent
   ],
   imports: [
     BrowserModule,
