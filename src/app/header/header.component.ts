@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StandardButtonModel } from '../model/standard-button-model';
 
 @Component({
   selector: 'app-header',
@@ -7,24 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  private editButtonName = "Edytuj na podstawie pdf";
-  private editButtonClass = "btn-outline-secondary";
+  editButton = {
+    name: "Edytuj na podstawie pdf",
+    class: "btn-outline-secondary",
+    callback: this.editButtonCallback,
+  }
 
-  private loadTemplateButtonName = "Wczytaj szablon";
-  private loadTemplateButtonClass = "btn-outline-secondary";
+  loadTemplateButton = {
+    name: "Wczytaj szablon",
+    class: "btn-outline-secondary",
+    callback: this.loadTemplateButtonCallback,
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  private editButtonCallback() : void{
+  private editButtonCallback(): void {
     console.log("hello edit button");
   }
 
-  private loadTemplateButtonCallback(): void{
+  private loadTemplateButtonCallback(): void {
     console.log("hello load button");
-    
   }
 
 }
