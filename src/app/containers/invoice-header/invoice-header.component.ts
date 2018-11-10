@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceHeaderComponent implements OnInit {
 
+  test: String;
+
   constructor() { }
 
   ngOnInit() {
