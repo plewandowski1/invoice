@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InvoiceSideComponent } from './invoice-side.component';
+import { InvoiceFormComponent } from './invoice-form.component';
 
-describe('InvoiceSideComponent', () => {
-  let component: InvoiceSideComponent;
-  let fixture: ComponentFixture<InvoiceSideComponent>;
+describe('InvoiceFormComponent', () => {
+  let component: InvoiceFormComponent;
+  let fixture: ComponentFixture<InvoiceFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InvoiceSideComponent ]
+      declarations: [ InvoiceFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InvoiceSideComponent);
+    fixture = TestBed.createComponent(InvoiceFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
