@@ -13,6 +13,16 @@ export class InvoiceFormComponent implements OnInit {
     {key: "invoiceVat", value: "Faktura VAT"},
   ]
 
+  paymentMethods = [
+    {key: "cash", value: "Gotówka"},
+    {key: "transfer", value: "Przelew"},
+  ]
+
+  paymentStatus = [
+    {key: "paid", value: "Zapłacone"},
+    {key: "notPaid", value: "Niezapłacone"}
+  ]
+
   invoiceForm = this.fb.group({
     document: [this.documentTypes[0]],
     creationPlace: ['Bydgoszcz'],
@@ -21,9 +31,25 @@ export class InvoiceFormComponent implements OnInit {
     sellDate: [''],
     sides: this.fb.group({
       seller: this.fb.group({
-        
-      })
+        sellerName: [''],
+        sellerNip: [''],
+        sellerStreet: [''],
+        sellerCity: [''],
+        sellerPostCode: [''],
+      }),
+      buyer: this.fb.group({
+        buyerName: [''],
+        buyerNip: [''],
+        buyerStreet: [''],
+        buyerCity: [''],
+        buyerPostCode: [''],
+      }),
     }),
+    status: [this.paymentStatus[1]],
+    paymentMethod: [this.paymentMethods[1]],
+    paymentDeadline: [''],
+    bankAccount: [''],
+    comments: [''],
   });
 
   constructor(private fb: FormBuilder) { }

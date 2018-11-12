@@ -34,63 +34,63 @@
 
   <div class="alert alert-primary"></div>
 
-  <div class="row">
-    <div class="col">
+  <div class="row" formGroupName="sides">
+    <div class="col" formGroupName="seller">
       <div class="form-group row">
         <label for="seller" class="col-sm-2 col-form-label">Sprzedawca</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="seller">
+          <input type="text" class="form-control" id="seller" formControlName="sellerName">
         </div>
       </div>
       <div class="form-group row">
-        <label for="nip" class="col-sm-2 col-form-label">NIP</label>
+        <label for="seller-nip" class="col-sm-2 col-form-label">NIP</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="nip">
+          <input type="text" class="form-control" id="seller-nip" formControlName="sellerNip">
         </div>
       </div>
       <div class="form-group row">
-        <label for="street" class="col-sm-2 col-form-label">Ulica</label>
+        <label for="seller-street" class="col-sm-2 col-form-label">Ulica</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="street">
+          <input type="text" class="form-control" id="seller-street" formControlName="sellerStreet">
         </div>
       </div>
       <div class="form-group row">
         <label for="city" class="col-sm-2 col-form-label">Miasto/kod</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="city">
+          <input type="text" class="form-control" id="city" formControlName="sellerCity">
         </div>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="postcode">
+          <input type="text" class="form-control" id="postcode" formControlName="sellerPostCode">
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col" formGroupName="buyer">
       <div class="col">
         <div class="form-group row">
-          <label for="buyer" class="col-sm-2 col-form-label">Nabywca</label>
+          <label for="buyer-name" class="col-sm-2 col-form-label">Nabywca</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="buyer">
+            <input type="text" class="form-control" id="buyer-name" formControlName="buyerName">
           </div>
         </div>
         <div class="form-group row">
           <label for="buyer-nip" class="col-sm-2 col-form-label">NIP</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="buyer-nip">
+            <input type="text" class="form-control" id="buyer-nip" formControlName="buyerNip">
           </div>
         </div>
         <div class="form-group row">
           <label for="buyer-street" class="col-sm-2 col-form-label">Ulica</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="buyer-street">
+            <input type="text" class="form-control" id="buyer-street" formControlName="buyerStreet">
           </div>
         </div>
         <div class="form-group row">
           <label for="buyer-city" class="col-sm-2 col-form-label">Miasto/kod</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="buyer-city">
+            <input type="text" class="form-control" id="buyer-city" formControlName="buyerCity">
           </div>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="buyer-postcode">
+            <input type="text" class="form-control" id="buyer-postcode" formControlName="buyerPostCode">
           </div>
         </div>
       </div>
@@ -244,24 +244,23 @@
     <div class="col-sm">
       <div class="form-group">
         <label for="status">Status</label>
-        <select class="form-control" id="status">
-          <option>Niezapłacona</option>
+        <select class="form-control" id="status" formControlName="status">
+          <option *ngFor="let status of paymentStatus" [ngValue]="status">{{status.value}}</option>
         </select>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label for="payment-method">Sposób płatności</label>
-        <select class="form-control" id="payment-method">
-          <option>Przelew</option>
-          <option>Gotówka</option>
+        <select class="form-control" id="payment-method" formControlName="paymentMethod">
+          <option *ngFor="let paymentMethod of paymentMethods" [ngValue]="paymentMethod">{{paymentMethod.value}}</option>
         </select>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label for="payment-deadline">Termin płatności</label>
-        <input type="date" class="form-control" id="payment-deadline">
+        <input type="date" class="form-control" id="payment-deadline" formControlName="paymentDeadline">
       </div>
     </div>
   </div>
@@ -270,13 +269,13 @@
     <div class="col">
       <div class="form-group">
         <label for="bank-account">Numer konta</label>
-        <input type="text" class="form-control" id="bank-account">
+        <input type="text" class="form-control" id="bank-account" formControlName="bankAccount">
       </div>
     </div>
     <div class="col">
       <div class="form-group">
         <label for="comments">Uwagi</label>
-        <input type="text" class="form-control" id="comments">
+        <input type="text" class="form-control" id="comments" formControlName="comments">
       </div>
     </div>
   </div>
