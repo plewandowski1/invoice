@@ -57,7 +57,17 @@ export class InvoiceFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {  
+  onSubmit(): void {  
     console.log(this.invoiceForm.value);
+  }
+
+  onServiceAdd(): void{
+    console.log("service add");
+    
+  }
+
+  onServiceRemove(): void{ 
+    console.log("remove service");
+    
   }
 }
