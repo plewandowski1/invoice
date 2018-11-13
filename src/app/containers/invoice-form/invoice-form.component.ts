@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Form } from '@angular/forms';
+import { FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-invoice-form',
@@ -45,6 +45,10 @@ export class InvoiceFormComponent implements OnInit {
         buyerPostCode: [''],
       }),
     }),
+    aliases: this.fb.array([
+      this.fb.control(''),
+      this.fb.control('')
+    ]),
     status: [this.paymentStatus[1]],
     paymentMethod: [this.paymentMethods[1]],
     paymentDeadline: [''],
@@ -57,17 +61,23 @@ export class InvoiceFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  get aliases() {
+    return this.invoiceForm.get('aliases') as FormArray;
+  }
+
+  addAlias(){
+    this.aliases.push(this.fb.control(''));
+  }
+
   onSubmit(): void {  
     console.log(this.invoiceForm.value);
   }
 
   onServiceAdd(): void{
-    console.log("service add");
-    
+    this.addAlias();
   }
 
-  onServiceRemove(): void{ 
-    console.log("remove service");
-    
+  onServiceRemove(index): void{ 
+    this.aliases.removeAt(index);
   }
 }
