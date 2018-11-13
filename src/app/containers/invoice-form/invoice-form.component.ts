@@ -46,8 +46,9 @@ export class InvoiceFormComponent implements OnInit {
       }),
     }),
     aliases: this.fb.array([
-      this.fb.control(''),
-      this.fb.control('')
+      this.fb.group({
+        serviceName: '',
+      })
     ]),
     status: [this.paymentStatus[1]],
     paymentMethod: [this.paymentMethods[1]],
@@ -66,7 +67,9 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   addAlias(){
-    this.aliases.push(this.fb.control(''));
+    this.aliases.push(this.fb.group({
+      serviceName: [''],
+    }));
   }
 
   onSubmit(): void {  
