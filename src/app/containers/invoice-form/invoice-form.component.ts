@@ -57,6 +57,12 @@ export class InvoiceFormComponent implements OnInit {
         grossValue: '0',
       })
     ]),
+    summary: this.fb.group({
+      nettoSummary: ['0'],
+      vatSummary: ['0'],
+      grossSummary: ['0'],
+      currency: ['PLN'],
+    }),
     status: [this.paymentStatus[1]],
     paymentMethod: [this.paymentMethods[1]],
     paymentDeadline: [''],
