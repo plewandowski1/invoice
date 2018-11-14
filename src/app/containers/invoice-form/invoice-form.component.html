@@ -131,7 +131,7 @@
           <i class="fas fa-minus" (click)="onServiceRemove(i)"></i>
         </div>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="buyer-city" formControlName="serviceName">
+          <input type="text" class="form-control" id="buyer-city" formControlName="serviceName" (change)="nettoValueChanged($event)">
         </div>
         <div class="col-sm-1">
           <input type="text" class="form-control" id="buyer-postcode" formControlName="unitOfMeasure">

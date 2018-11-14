@@ -103,4 +103,11 @@ export class InvoiceFormComponent implements OnInit {
   onServiceRemove(index): void{ 
     this.aliases.removeAt(index);
   }
+
+  nettoValueChanged(event){
+
+    console.log(this.invoiceForm.value);
+    
+    console.log(event.target.value); 
+  }
 }
