@@ -48,6 +48,13 @@ export class InvoiceFormComponent implements OnInit {
     aliases: this.fb.array([
       this.fb.group({
         serviceName: '',
+        unitOfMeasure: 'usł.',
+        amount: '0',
+        nettoPrice: '0',
+        nettoValue: '0',
+        vatRate: '23%',
+        vatAmount: '0',
+        grossValue: '0',
       })
     ]),
     status: [this.paymentStatus[1]],
@@ -68,7 +75,14 @@ export class InvoiceFormComponent implements OnInit {
 
   addAlias(){
     this.aliases.push(this.fb.group({
-      serviceName: [''],
+      serviceName: '',
+      unitOfMeasure: 'usł.',
+      amount: '0',
+      nettoPrice: '0',
+      nettoValue: '0',
+      vatRate: '0',
+      vatAmount: '0',
+      grossValue: '0',
     }));
   }
 

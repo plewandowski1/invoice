@@ -98,11 +98,8 @@
   </div>
 
   <div class="form-group row alert alert-primary">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       Nazwa towaru lub usługi
-    </div>
-    <div class="col-sm-1">
-      Kod
     </div>
     <div class="col-sm-1">
       Jm.
@@ -133,32 +130,29 @@
         <div class="col-sm-1">
           <i class="fas fa-minus" (click)="onServiceRemove(i)"></i>
         </div>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" id="buyer-city" formControlName='serviceName'>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="buyer-city" formControlName="serviceName">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="unitOfMeasure">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="amount">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="nettoPrice">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="nettoValue">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="vatRate">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="vatAmount">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
-        </div>
-        <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="grossValue">
         </div>
       </div>
     </div>
