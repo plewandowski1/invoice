@@ -124,8 +124,8 @@
     </div>
   </div>
 
-  <div formArrayName="aliases">
-    <div *ngFor="let alias of aliases.controls; let i=index">
+  <div formArrayName="paymentInfo">
+    <div *ngFor="let row of paymentInfo.controls; let i=index">
      <div class="form-group row" [formGroupName]='i'>
         <div class="col-sm-1">
           <i class="fas fa-minus" (click)="onServiceRemove(i)"></i>

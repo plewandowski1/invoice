@@ -45,7 +45,7 @@ export class InvoiceFormComponent implements OnInit {
         buyerPostCode: [''],
       }),
     }),
-    aliases: this.fb.array([
+    paymentInfo: this.fb.array([
       this.fb.group({
         serviceName: '',
         unitOfMeasure: 'usł.',
@@ -75,12 +75,12 @@ export class InvoiceFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  get aliases() {
-    return this.invoiceForm.get('aliases') as FormArray;
+  get paymentInfo() {
+    return this.invoiceForm.get('paymentInfo') as FormArray;
   }
 
   addAlias(){
-    this.aliases.push(this.fb.group({
+    this.paymentInfo.push(this.fb.group({
       serviceName: '',
       unitOfMeasure: 'usł.',
       amount: '0',
@@ -101,13 +101,12 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   onServiceRemove(index): void{ 
-    this.aliases.removeAt(index);
+    this.paymentInfo.removeAt(index);
   }
 
-  nettoValueChanged(event){
+  calculatePayment(){
 
-    console.log(this.invoiceForm.value);
     
-    console.log(event.target.value); 
+    
   }
 }
