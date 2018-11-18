@@ -105,8 +105,7 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   calculatePayment(){
-
-    
+    console.log("payment changed");
     
   }
 }

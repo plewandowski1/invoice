@@ -131,28 +131,28 @@
           <i class="fas fa-minus" (click)="onServiceRemove(i)"></i>
         </div>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="buyer-city" formControlName="serviceName" (change)="nettoValueChanged($event)">
+          <input type="text" class="form-control" id="buyer-city" formControlName="serviceName" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="unitOfMeasure">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="unitOfMeasure" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="amount">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="amount" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="nettoPrice">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="nettoPrice" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="nettoValue">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="nettoValue" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="vatRate">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="vatRate" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="vatAmount">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="vatAmount" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="grossValue">
+          <input type="text" class="form-control" id="buyer-postcode" formControlName="grossValue" (change)="calculatePayment()">
         </div>
       </div>
     </div>
