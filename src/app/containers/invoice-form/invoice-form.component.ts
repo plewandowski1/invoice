@@ -10,17 +10,17 @@ import { FormBuilder, FormArray } from '@angular/forms';
 export class InvoiceFormComponent implements OnInit {
 
   documentTypes = [
-    {key: "invoiceVat", value: "Faktura VAT"},
+    { key: "invoiceVat", value: "Faktura VAT" },
   ]
 
   paymentMethods = [
-    {key: "cash", value: "Gotówka"},
-    {key: "transfer", value: "Przelew"},
+    { key: "cash", value: "Gotówka" },
+    { key: "transfer", value: "Przelew" },
   ]
 
   paymentStatus = [
-    {key: "paid", value: "Zapłacone"},
-    {key: "notPaid", value: "Niezapłacone"}
+    { key: "paid", value: "Zapłacone" },
+    { key: "notPaid", value: "Niezapłacone" }
   ]
 
   invoiceForm = this.fb.group({
@@ -79,7 +79,7 @@ export class InvoiceFormComponent implements OnInit {
     return this.invoiceForm.get('paymentInfo') as FormArray;
   }
 
-  addAlias(){
+  addAlias() {
     this.paymentInfo.push(this.fb.group({
       serviceName: '',
       unitOfMeasure: 'usł.',
@@ -92,20 +92,50 @@ export class InvoiceFormComponent implements OnInit {
     }));
   }
 
-  onSubmit(): void {  
+  onSubmit(): void {
     console.log(this.invoiceForm.value);
   }
 
-  onServiceAdd(): void{
+  onServiceAdd(): void {
     this.addAlias();
   }
 
-  onServiceRemove(index): void{ 
+  onServiceRemove(index): void {
     this.paymentInfo.removeAt(index);
   }
 
-  calculatePayment(){
-    console.log("payment changed");
-    
+  calculatePayment() {
+    this.paymentInfo.controls.forEach(element => {
+      var nettoValue = this.getNettoValue(element);
+      var vatValue = this.getVatValue(element);
+      var grossValue = this.getGrossValue(element);
+
+      console.log(nettoValue);
+      console.log(vatValue);
+      console.log(grossValue);
+    });
+  }
+
+  private getNettoValue(element) {
+    var amount = element.get('amount').value;
+    var nettoPrice = element.get('nettoPrice').value;
+
+    return amount * nettoPrice;
+  }
+
+  private getVatValue(element) {
+    var vatRate: String = element.get('vatRate').value;
+    var nettoValue = element.get('nettoValue').value;
+
+    var intVatRate = 100 - Number(vatRate.replace("%", ""));
+
+    return (nettoValue * 100 / intVatRate) - nettoValue;
+  }
+
+  private getGrossValue(element) {
+    var vatAmount = element.get('vatAmount').value;
+    var nettoValue = element.get('nettoValue').value;
+
+    return +vatAmount + +nettoValue;
   }
 }
