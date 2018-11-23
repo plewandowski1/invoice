@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Form } from '@angular/forms';
-import { FormBuilder, FormArray } from '@angular/forms';
+import { FormBuilder, FormArray, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-invoice-form',
@@ -53,8 +53,8 @@ export class InvoiceFormComponent implements OnInit {
         nettoPrice: '0',
         nettoValue: '0',
         vatRate: '23%',
-        vatAmount: '0',
-        grossValue: '0',
+        vatAmount: 2,
+        grossValue: 0,
       })
     ]),
     summary: this.fb.group({
@@ -86,7 +86,7 @@ export class InvoiceFormComponent implements OnInit {
       amount: '0',
       nettoPrice: '0',
       nettoValue: '0',
-      vatRate: '0',
+      vatRate: '23%',
       vatAmount: '0',
       grossValue: '0',
     }));
@@ -106,36 +106,45 @@ export class InvoiceFormComponent implements OnInit {
 
   calculatePayment() {
     this.paymentInfo.controls.forEach(element => {
-      var nettoValue = this.getNettoValue(element);
-      var vatValue = this.getVatValue(element);
-      var grossValue = this.getGrossValue(element);
-
-      console.log(nettoValue);
-      console.log(vatValue);
-      console.log(grossValue);
+      this.calculateNettoValue(element);
+      this.calculateVatValue(element);
+      this.calculateGrossValue(element);
     });
   }
 
-  private getNettoValue(element) {
+  private calculateNettoValue(element: AbstractControl) {
     var amount = element.get('amount').value;
     var nettoPrice = element.get('nettoPrice').value;
 
-    return amount * nettoPrice;
+    var nettoValue = amount * nettoPrice;
+
+    element.patchValue({
+      nettoValue: nettoValue
+    })
   }
 
-  private getVatValue(element) {
+  private calculateVatValue(element: AbstractControl) {
     var vatRate: String = element.get('vatRate').value;
     var nettoValue = element.get('nettoValue').value;
 
     var intVatRate = 100 - Number(vatRate.replace("%", ""));
+    var vatAmount = (nettoValue * 100 / intVatRate) - nettoValue;
 
-    return (nettoValue * 100 / intVatRate) - nettoValue;
+    element.patchValue({
+      vatAmount: vatAmount
+    })
   }
 
-  private getGrossValue(element) {
+  private calculateGrossValue(element: AbstractControl) {
     var vatAmount = element.get('vatAmount').value;
     var nettoValue = element.get('nettoValue').value;
 
-    return +vatAmount + +nettoValue;
+    var grossValue = +vatAmount + +nettoValue;
+
+    console.log(grossValue);
+    
+    element.patchValue({
+      grossValue: grossValue
+    })
   }
 }
