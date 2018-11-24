@@ -47,20 +47,20 @@ export class InvoiceFormComponent implements OnInit {
     }),
     paymentInfo: this.fb.array([
       this.fb.group({
-        serviceName: '',
-        unitOfMeasure: 'usł.',
-        amount: '0',
-        nettoPrice: '0',
-        nettoValue: '0',
-        vatRate: '23%',
-        vatAmount: 2,
-        grossValue: 0,
+        serviceName: [''],
+        unitOfMeasure: ['usł.'],
+        amount: [0],
+        nettoPrice: [0],
+        nettoValue: [{value: 0, disabled: true}],
+        vatRate: ['23%'],
+        vatAmount: [{value: 0, disabled: true}],
+        grossValue: [{value: 0, disabled: true}],
       })
     ]),
     summary: this.fb.group({
-      nettoSummary: [0],
-      vatSummary: [0],
-      grossSummary: [0],
+      nettoSummary: [{value: 0, disabled: true}],
+      vatSummary: [{value: 0, disabled: true}],
+      grossSummary: [{value: 0, disabled: true}],
       currency: ['PLN'],
     }),
     status: [this.paymentStatus[1]],
@@ -81,14 +81,14 @@ export class InvoiceFormComponent implements OnInit {
 
   addAlias() {
     this.paymentInfo.push(this.fb.group({
-      serviceName: '',
-      unitOfMeasure: 'usł.',
-      amount: '0',
-      nettoPrice: '0',
-      nettoValue: '0',
-      vatRate: '23%',
-      vatAmount: '0',
-      grossValue: '0',
+      serviceName: [''],
+      unitOfMeasure: ['usł.'],
+      amount: [0],
+      nettoPrice: [0],
+      nettoValue: [{value: 0, disabled: true}],
+      vatRate: ['23%'],
+      vatAmount: [{value: 0, disabled: true}],
+      grossValue: [{value: 0, disabled: true}],
     }));
   }
 
@@ -120,10 +120,6 @@ export class InvoiceFormComponent implements OnInit {
       summary.gross += grossValue;
       summary.vatAmount += vatValue;
     });
-
-    console.log(summary.vatAmount.toFixed(2));
-    
-
     this.updateSummary(summary);
   }
 
