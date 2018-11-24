@@ -31,9 +31,9 @@ export class InvoiceFormComponent implements OnInit {
   invoiceForm = this.fb.group({
     document: [this.documentTypes[0]],
     creationPlace: ['Bydgoszcz'],
-    number: [''],
-    creationDate: [''],
-    sellDate: [''],
+    number: [this.generateNumber()],
+    creationDate: [this.generateDate()],
+    sellDate: [this.generateDate()],
     sides: this.fb.group({
       seller: this.fb.group({
         sellerName: [''],
@@ -175,5 +175,23 @@ export class InvoiceFormComponent implements OnInit {
       grossSummary: [summary.gross.toFixed(2)],
       currency: ['PLN'],
     })
+  }
+
+  private generateNumber() {
+    return new Date()
+      .toLocaleDateString()
+      .replace('.', "/")
+      .replace('.', '/')
+      .replace(new RegExp('[0-9]+'), "01");
+  }
+
+  private generateDate() {
+    var date = new Date();
+
+    var day = date.getDate();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+
+    return year + '-' + month + '-' + day;
   }
 }
