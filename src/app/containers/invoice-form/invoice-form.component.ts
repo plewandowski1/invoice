@@ -58,9 +58,9 @@ export class InvoiceFormComponent implements OnInit {
       })
     ]),
     summary: this.fb.group({
-      nettoSummary: ['0'],
-      vatSummary: ['0'],
-      grossSummary: ['0'],
+      nettoSummary: [0],
+      vatSummary: [0],
+      grossSummary: [0],
       currency: ['PLN'],
     }),
     status: [this.paymentStatus[1]],
@@ -105,11 +105,23 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   calculatePayment() {
+    var summary = {
+      netto: 0,
+      gross: 0,
+      vatAmount: 0,  
+    }
+
     this.paymentInfo.controls.forEach(element => {
-      this.calculateNettoValue(element);
-      this.calculateVatValue(element);
-      this.calculateGrossValue(element);
+      var nettoValue = this.calculateNettoValue(element);
+      var vatValue = this.calculateVatValue(element);
+      var grossValue = this.calculateGrossValue(element);
+
+      summary.netto += nettoValue;
+      summary.gross += grossValue;
+      summary.vatAmount += vatValue;
     });
+
+    this.updateSummary(summary);
   }
 
   private calculateNettoValue(element: AbstractControl) {
@@ -121,6 +133,8 @@ export class InvoiceFormComponent implements OnInit {
     element.patchValue({
       nettoValue: nettoValue
     })
+
+    return nettoValue;
   }
 
   private calculateVatValue(element: AbstractControl) {
@@ -133,6 +147,8 @@ export class InvoiceFormComponent implements OnInit {
     element.patchValue({
       vatAmount: vatAmount
     })
+
+    return vatAmount;
   }
 
   private calculateGrossValue(element: AbstractControl) {
@@ -140,11 +156,20 @@ export class InvoiceFormComponent implements OnInit {
     var nettoValue = element.get('nettoValue').value;
 
     var grossValue = +vatAmount + +nettoValue;
-
-    console.log(grossValue);
     
     element.patchValue({
       grossValue: grossValue
+    })
+
+    return grossValue;
+  }
+  
+  private updateSummary(summary){
+    this.invoiceForm.controls['summary'].patchValue({
+      nettoSummary: [summary.netto],
+      vatSummary: [summary.vatAmount],
+      grossSummary: [summary.gross],
+      currency: ['PLN'],
     })
   }
 }
