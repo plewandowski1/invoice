@@ -28,6 +28,10 @@ export class InvoiceFormComponent implements OnInit {
     { key: "usd", value: "USD" },
   ]
 
+  unitsOfMeasure = [
+    {key: "service", value: "usł."}
+  ]
+
   invoiceForm = this.fb.group({
     document: [this.documentTypes[0]],
     creationPlace: ['Bydgoszcz'],
@@ -53,7 +57,7 @@ export class InvoiceFormComponent implements OnInit {
     paymentInfo: this.fb.array([
       this.fb.group({
         serviceName: [''],
-        unitOfMeasure: ['usł.'],
+        unitOfMeasure: [this.unitsOfMeasure[0]],
         amount: [0],
         nettoPrice: [0],
         nettoValue: [{ value: 0, disabled: true }],

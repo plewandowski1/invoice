@@ -134,7 +134,9 @@
           <input type="text" class="form-control" id="buyer-city" formControlName="serviceName" (change)="calculatePayment()">
         </div>
         <div class="col-sm-1">
-          <input type="text" class="form-control" id="buyer-postcode" formControlName="unitOfMeasure" (change)="calculatePayment()">
+          <select class="form-control" id="unit-of-measure" formControlName="unitOfMeasure">
+            <option *ngFor="let unitOfMeasure of unitsOfMeasure" [ngValue]="unitOfMeasure">{{unitOfMeasure.value}}</option>
+          </select>
         </div>
         <div class="col-sm-1">
           <input type="text" class="form-control" id="buyer-postcode" formControlName="amount" (change)="calculatePayment()">
