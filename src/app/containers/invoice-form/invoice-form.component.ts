@@ -23,6 +23,11 @@ export class InvoiceFormComponent implements OnInit {
     { key: "notPaid", value: "Niezapłacone" }
   ]
 
+  currencies = [
+    { key: "pln", value: "PLN" },
+    { key: "usd", value: "USD" },
+  ]
+
   invoiceForm = this.fb.group({
     document: [this.documentTypes[0]],
     creationPlace: ['Bydgoszcz'],
@@ -51,17 +56,17 @@ export class InvoiceFormComponent implements OnInit {
         unitOfMeasure: ['usł.'],
         amount: [0],
         nettoPrice: [0],
-        nettoValue: [{value: 0, disabled: true}],
+        nettoValue: [{ value: 0, disabled: true }],
         vatRate: ['23%'],
-        vatAmount: [{value: 0, disabled: true}],
-        grossValue: [{value: 0, disabled: true}],
+        vatAmount: [{ value: 0, disabled: true }],
+        grossValue: [{ value: 0, disabled: true }],
       })
     ]),
     summary: this.fb.group({
-      nettoSummary: [{value: 0, disabled: true}],
-      vatSummary: [{value: 0, disabled: true}],
-      grossSummary: [{value: 0, disabled: true}],
-      currency: ['PLN'],
+      nettoSummary: [{ value: 0, disabled: true }],
+      vatSummary: [{ value: 0, disabled: true }],
+      grossSummary: [{ value: 0, disabled: true }],
+      currency: [this.currencies[0]],
     }),
     status: [this.paymentStatus[1]],
     paymentMethod: [this.paymentMethods[1]],
@@ -85,10 +90,10 @@ export class InvoiceFormComponent implements OnInit {
       unitOfMeasure: ['usł.'],
       amount: [0],
       nettoPrice: [0],
-      nettoValue: [{value: 0, disabled: true}],
+      nettoValue: [{ value: 0, disabled: true }],
       vatRate: ['23%'],
-      vatAmount: [{value: 0, disabled: true}],
-      grossValue: [{value: 0, disabled: true}],
+      vatAmount: [{ value: 0, disabled: true }],
+      grossValue: [{ value: 0, disabled: true }],
     }));
   }
 
@@ -108,7 +113,7 @@ export class InvoiceFormComponent implements OnInit {
     var summary = {
       netto: 0,
       gross: 0,
-      vatAmount: 0,  
+      vatAmount: 0,
     }
 
     this.paymentInfo.controls.forEach(element => {
@@ -130,7 +135,7 @@ export class InvoiceFormComponent implements OnInit {
     var nettoValue = amount * nettoPrice;
 
     element.patchValue({
-      nettoValue: nettoValue.toFixed(2)
+      nettoValue: nettoValue.toFixed(2),
     })
 
     return nettoValue;
@@ -155,15 +160,15 @@ export class InvoiceFormComponent implements OnInit {
     var nettoValue = element.get('nettoValue').value;
 
     var grossValue = +vatAmount + +nettoValue;
-    
+
     element.patchValue({
       grossValue: grossValue.toFixed(2)
     })
 
     return grossValue;
   }
-  
-  private updateSummary(summary){
+
+  private updateSummary(summary) {
     this.invoiceForm.controls['summary'].patchValue({
       nettoSummary: [summary.netto.toFixed(2)],
       vatSummary: [summary.vatAmount.toFixed(2)],
