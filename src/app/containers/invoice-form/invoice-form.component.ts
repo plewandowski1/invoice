@@ -121,6 +121,9 @@ export class InvoiceFormComponent implements OnInit {
       summary.vatAmount += vatValue;
     });
 
+    console.log(summary.vatAmount.toFixed(2));
+    
+
     this.updateSummary(summary);
   }
 
@@ -131,7 +134,7 @@ export class InvoiceFormComponent implements OnInit {
     var nettoValue = amount * nettoPrice;
 
     element.patchValue({
-      nettoValue: nettoValue
+      nettoValue: nettoValue.toFixed(2)
     })
 
     return nettoValue;
@@ -141,11 +144,11 @@ export class InvoiceFormComponent implements OnInit {
     var vatRate: String = element.get('vatRate').value;
     var nettoValue = element.get('nettoValue').value;
 
-    var intVatRate = 100 - Number(vatRate.replace("%", ""));
-    var vatAmount = (nettoValue * 100 / intVatRate) - nettoValue;
+    var intVatRate = 100 + Number(vatRate.replace("%", ""));
+    var vatAmount = (nettoValue * intVatRate / 100) - nettoValue;
 
     element.patchValue({
-      vatAmount: vatAmount
+      vatAmount: vatAmount.toFixed(2)
     })
 
     return vatAmount;
@@ -158,7 +161,7 @@ export class InvoiceFormComponent implements OnInit {
     var grossValue = +vatAmount + +nettoValue;
     
     element.patchValue({
-      grossValue: grossValue
+      grossValue: grossValue.toFixed(2)
     })
 
     return grossValue;
@@ -166,9 +169,9 @@ export class InvoiceFormComponent implements OnInit {
   
   private updateSummary(summary){
     this.invoiceForm.controls['summary'].patchValue({
-      nettoSummary: [summary.netto],
-      vatSummary: [summary.vatAmount],
-      grossSummary: [summary.gross],
+      nettoSummary: [summary.netto.toFixed(2)],
+      vatSummary: [summary.vatAmount.toFixed(2)],
+      grossSummary: [summary.gross.toFixed(2)],
       currency: ['PLN'],
     })
   }
