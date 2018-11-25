@@ -112,15 +112,140 @@ export class InvoicePdfBuilder{
     `
     private content;
 
-    public addContent(){
-        var size = this.calculateTextSize("this text is in the center of whole document", "10px");
+    private documentSettings = {
+        global: {
+            documentWidth: 595.28,
+            documentHeight: 841.89,
+        },
+        number: {
+            fontSize: "15",
+            positionY: "600",
+        },
+        creationPlace: {
+            header: "Miejsce wystawienia",
+            fontSize: "10",
+            positionY: "800",
+            headerPositionY: "812",
+            positionX: "400",
+        },
+        creationDate: {
+            header: "Data wystawienia",
+            fontSize: "10",
+            headerPositionY: "780",
+            positionY: "768",
+            positionX: "400",
+        },
+        sellDate: {
+            header: "Data sprzedaży",
+            fontSize: "10",
+            headerPositionY: "748",
+            positionY: "736",
+            positionX: "400",
+        },
+        seller:{
+            header: "Sprzedawca",
+            fontSize: "10",
+            positionY: 700,
+            positionX: 50,
+        },
+        buyer:{
+            header: "Nabywca",
+            fontSize: "10",
+            positionY: 700,
+            positionX: 350,
+        }
+    }
 
-        var centerPosition = (595.28 / 2) - (size.width / 2);
-        var textPart = this.getText("this text is in the center of whole document", {width: centerPosition, height: "700"}, "10px")
+    public addNumber(number){
+        var { positionY, fontSize } = this.documentSettings.number;
+        var { documentWidth } = this.documentSettings.global;
 
-        this.content = textPart;
+        var textSize = this.calculateTextSize(number, fontSize + "px");
+
+        var centerPosition = (documentWidth / 2) - (textSize.width / 2);
+        var textPart = this.getText(number, {width: centerPosition, height: positionY}, fontSize)
+
+        this.content += textPart;
 
         return this;
+    }
+
+    public addCreationPlace(creationPlace){
+        var { positionY, fontSize, header, headerPositionY, positionX } = this.documentSettings.creationPlace;
+
+        var header = this.getText(header, {width: positionX, height: headerPositionY}, fontSize)
+        var content = this.getText(creationPlace, {width: positionX, height: positionY}, fontSize)
+
+        this.content += header
+        this.content += content
+
+        return this;
+    }
+
+    public addCreationDate(creationDate){
+        var { positionY, fontSize, header, headerPositionY, positionX } = this.documentSettings.creationDate;
+
+        var header = this.getText(header, {width: positionX, height: headerPositionY}, fontSize)
+        var content = this.getText(creationDate, {width: positionX, height: positionY}, fontSize)
+
+        this.content += header
+        this.content += content
+
+        return this;
+    }
+
+    public addSellDate(sellDate){
+        var { positionY, fontSize, header, headerPositionY, positionX } = this.documentSettings.sellDate;
+
+        var header = this.getText(header, {width: positionX, height: headerPositionY}, fontSize)
+        var content = this.getText(sellDate, {width: positionX, height: positionY}, fontSize)
+
+        this.content += header
+        this.content += content
+
+        return this;
+    }
+
+    public addSeller(seller: String[]){
+        var { positionY, fontSize, header, positionY, positionX } = this.documentSettings.seller;
+
+        var header = this.getText(header, {width: positionX, height: positionY + ""}, fontSize)
+        
+        positionY = positionY - 20
+        seller.forEach(textLine => {
+            var pdfLine = this.getText(textLine, {width: positionX, height: positionY + ""}, fontSize)
+
+            this.content += pdfLine
+
+            positionY = positionY - 12;
+        })
+
+        this.content += header
+
+        return this;
+    }
+
+    public addBuyer(buyer: String[]){
+        var { positionY, fontSize, header, positionY, positionX } = this.documentSettings.buyer;
+
+        var header = this.getText(header, {width: positionX, height: positionY + ""}, fontSize)
+        
+        positionY = positionY - 20
+        buyer.forEach(textLine => {
+            var pdfLine = this.getText(textLine, {width: positionX, height: positionY + ""}, fontSize)
+
+            this.content += pdfLine
+
+            positionY = positionY - 12;
+        })
+
+        this.content += header
+
+        return this;
+    }
+
+    public build(){
+        return this.firstPart + this.content + this.endOfDocument;
     }
 
     private getText(text, position, fontSize){
@@ -137,10 +262,6 @@ export class InvoicePdfBuilder{
         .replace("[%text%]", text)
     
         return returnValue;
-      }
-
-    public build(){
-        return this.firstPart + this.content + this.endOfDocument;
     }
 
     private calculateTextSize(text, fontSize){
