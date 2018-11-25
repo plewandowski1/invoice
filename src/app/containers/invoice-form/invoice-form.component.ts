@@ -3,6 +3,8 @@ import { FormBuilder, FormArray, AbstractControl } from '@angular/forms';
 import jsPDF from 'jspdf';
 import { Base64 } from 'js-base64';
 
+import { InvoiceService } from '../../services/invoice.service';
+
 @Component({
   selector: 'app-invoice-form',
   templateUrl: './invoice-form.component.html',
@@ -80,7 +82,8 @@ export class InvoiceFormComponent implements OnInit {
     comments: [''],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private invoiceService: InvoiceService) { 
+  }
 
   ngOnInit() {
   }
@@ -222,31 +225,6 @@ startxref
     `
 
     // window.open('data:application/pdf;base64,' + Base64.encode(buffer));
-
-    
-    // position: absolute;
-    // font-family: Helvetica,Helvetica,Arial,sans-serif;
-    // visibility: hidden;
-    // height: auto;
-    // width: auto;
-    // white-space: nowrap; /* Thanks to Herb Caudill comment */
-
-
-var test = document.getElementById("Test");
-
-test.innerHTML = 'hello world'  
-test.style.fontSize = '12px';
-test.style.position = 'absolute';
-test.style.fontFamily = 'Arial';
-test.style.visibility = 'hidden';
-test.style.height = 'auto';
-test.style.width = 'auto';
-test.style.whiteSpace = 'nowrap';
-
-var height = (test.clientHeight + 1) + "px";
-var width = (test.clientWidth + 1) + "px"
-
-console.log(height, width);
 
   }
 
