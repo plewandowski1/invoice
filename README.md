@@ -1,5 +1,8 @@
 # TODO
  - internationalization
+ - pdf creation based on form
+ - loading data for form based on pdf
+ - loading data from template in json format
 
 # Invoice
 
